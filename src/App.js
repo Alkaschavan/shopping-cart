@@ -17,15 +17,26 @@ function App() {
     setCartItems([...cartItems, product]);
   };
 
+  const removeFromCart = (productId) => {
+    setCartItems(cartItems.filter((item) => item.id !== productId));
+  };
+
+  const removeAllFromCart = () => {
+    setCartItems([]);
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       <Navbar cartCount={cartItems.length} />
       <div className="flex gap-6 p-6">
         <ProductList products={products} addToCart={addToCart} />
-        <Cart cartItems={cartItems} />
+        <Cart cartItems={cartItems} removeFromCart={removeFromCart} removeAllFromCart={removeAllFromCart} />
       </div>
     </div>
   );
 }
+
+
+
 
 export default App;

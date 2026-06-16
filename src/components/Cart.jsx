@@ -1,5 +1,5 @@
 function Cart({ cartItems, removeFromCart, removeAllFromCart }) {
-    const total = cartItems.reduce((sum, item) => sum + item.price, 0);
+    const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   
     return (
       <div className="bg-white rounded-xl shadow p-4 w-72 h-fit">
@@ -17,9 +17,9 @@ function Cart({ cartItems, removeFromCart, removeAllFromCart }) {
         ) : (
           cartItems.map((item, index) => (
             <div key={index} className="flex justify-between items-center py-2 border-b">
-              <span>{item.name}</span>
+              <span>{item.name} x{item.quantity}</span>
               <div className="flex items-center gap-2">
-                <span className="font-bold">${item.price}</span>
+                <span className="font-bold">${item.price * item.quantity}</span>
                 <button
                   onClick={() => removeFromCart(item.id)}
                   className="bg-red-500 text-white px-2 py-1 rounded text-sm hover:bg-red-600"

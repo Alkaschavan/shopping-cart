@@ -1,15 +1,22 @@
 function ProductCard({ product, addToCart }) {
     return (
-      <div className="bg-white rounded-xl shadow p-4 flex flex-col gap-3">
-        <img src={product.image} alt={product.name} className="w-full h-40 object-cover rounded-lg" />
-        <h2 className="font-bold text-gray-800">{product.name}</h2>
-        <p className="text-blue-600 font-bold">${product.price}</p>
-        <button
-          onClick={() => addToCart(product)}
-          className="bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
-        >
-          Add to Cart
-        </button>
+      <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <div className="relative">
+          <img src={product.image} alt={product.name} className="w-full h-72 object-cover object-top" />
+          <div className="absolute top-3 right-3 bg-white text-rose-500 text-xs font-bold px-2 py-1 rounded-full shadow">
+            NEW
+          </div>
+        </div>
+        <div className="p-4">
+          <h2 className="font-semibold text-gray-800 text-lg">{product.name}</h2>
+          <p className="text-rose-500 font-bold text-xl mt-1">${product.price}</p>
+          <button
+            onClick={() => addToCart(product)}
+            className="mt-3 w-full bg-gray-900 text-white py-2 rounded-xl hover:bg-rose-500 transition-colors duration-300 text-sm tracking-widest"
+          >
+            ADD TO CART
+          </button>
+        </div>
       </div>
     );
   }
